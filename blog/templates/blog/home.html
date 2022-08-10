@@ -7,12 +7,15 @@
     <title>Home</title>
 </head>
 <body>
+    <center>
     {% for article in articles%}
     <article>
-        <img src="{{article.img}}" alt="">
-        <h1>{{article.title}}</h1>
+        <img src="{{article.thumbnail.url}}" alt="" width="600" height="400"> 
+        <h1><a href="{{article.slug}}">{{article.title}}</a></h1>
+        <small>{{article.publish}}</small>
         <p>{{article.description}}</p>
     </article>
     {% endfor %}
+    </center>
 </body>
 </html>
