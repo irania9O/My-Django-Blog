@@ -10,15 +10,13 @@
     article {text-align: center;}
 </style>
 <body>
-
-    {% for article in articles%}
+    
     <article>
         <img src="{{article.thumbnail.url}}" alt="" width="600" height="400"> 
-        <h1><a href="{% url 'blog:detail' article.slug %}">{{article.title}}</a></h1>
+        <h1>{{article.title}}</h1>
         <small>{{article.publish}}</small>
         <p>{{article.description}}</p>
     </article>
-    {% endfor %}
 
 </body>
 </html>
