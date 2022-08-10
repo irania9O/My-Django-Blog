@@ -37,13 +37,17 @@
                         <a href="#!">علی</a>
                         {{ article.jpublish }}
                     </p>
+                    <div class="post-tags" >
+                        {% for catagory in article.catagory.all %}
+                            <a href="#">#{{catagory.title}}</a>
+                        {% endfor %}
+                    </div>
                 </div>
                 <!-- Divider-->
                 <hr class="my-4" />
             {% endfor %}
             <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts
-                    →</a></div>
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!"> پست های قدیمی &larr;</a></div>
         </div>
     </div>
 </div>

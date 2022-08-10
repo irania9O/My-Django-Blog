@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Article
+from .models import Article, Catagory
 
 def home(request):
     context = {
-        "articles": Article.objects.filter(status='p').order_by('-publish')
+        "articles": Article.objects.filter(status='p'),
+        "catagories": Catagory.objects.filter(status=True)
     }
     return render(request, "blog/home.html", context)
 
