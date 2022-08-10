@@ -9,8 +9,11 @@ class Article(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=100, unique=True)
     description = models.TextField()
-    thumbnail = models.ImageField(upload_to="Images")
+    thumbnail = models.ImageField(upload_to="images")
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
+
+    def __str__(self) -> str:
+        return self.title

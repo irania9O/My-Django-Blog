@@ -20,3 +20,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls'))
 ]
+
+
+# Just for debug mode , not useable in deploy.
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
