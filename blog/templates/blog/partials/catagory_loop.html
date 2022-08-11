@@ -1,0 +1,15 @@
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{catagory.title}} </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            {% for catagory in catagory.children.active%}
+                {% if catagory.children.active %}
+                    {% include 'blog/partials/catagory_loop.html'%}
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog:catagory' catagory.slug %}">{{catagory.title}}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+</li>
