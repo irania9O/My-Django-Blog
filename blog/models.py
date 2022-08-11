@@ -1,6 +1,7 @@
 from tkinter.messagebox import NO
 from django.db import models
 from django.utils import timezone
+from django.utils.html import format_html 
 from extentions.utils import jalali_converter
 
 # my manager 
@@ -84,3 +85,8 @@ class Article(models.Model):
         return self.catagory.filter(status=True)
     
     objects = ArticleManager()
+
+    def thumbnail_tag(self):
+        return format_html(f"<img width=100 height=60 style='border-radius: 5px;' src='{self.thumbnail.url}'>")
+   
+    thumbnail_tag.short_description = "عکس"
