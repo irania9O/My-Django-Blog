@@ -48,7 +48,14 @@
                 <hr class="my-4" />
             {% endfor %}
             <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!"> پست های قدیمی &larr;</a></div>
+            <div class="d-flex justify-content-between mb-4">
+                {% if articles.has_previous %}
+                    <a class="btn btn-primary text-uppercase" href="{% url 'blog:home' articles.previous_page_number %}">&rarr; پست های جدید </a>
+                {% endif %}
+                {% if articles.has_next %}
+                    <a class="btn btn-primary text-uppercase" href="{% url 'blog:home' articles.next_page_number %}"> پست های قدیمی &larr;</a>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
