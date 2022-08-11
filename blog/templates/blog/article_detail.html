@@ -1,11 +1,11 @@
 {% extends 'blog/base.html' %}
 
-{% block title %} | {{article.title}}{% endblock %}
+{% block title %} | {{object.title}}{% endblock %}
 
 {% block main %}
 <style>
     header.masthead {
-        background-image: url("{{ article.thumbnail.url }}")
+        background-image: url("{{ object.thumbnail.url }}")
       }
 </style>
 
@@ -15,8 +15,8 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>{{article.title}}</h1>
-                    <time>{{article.jpublish}}</time>
+                    <h1>{{object.title}}</h1>
+                    <time>{{object.jpublish}}</time>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                {{article.description | linebreaks}}
+                {{object.description | linebreaks}}
             </div>
             
         </div>
