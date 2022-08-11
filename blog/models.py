@@ -2,6 +2,10 @@ from django.db import models
 from django.utils import timezone
 from extentions.utils import jalali_converter
 
+# my manager 
+class ArticleManager(models.Manager):
+    def published(self):
+        return self.filter(status='p')
 class SingletonBaseModel(models.Model):
     class Meta:
         verbose_name = "تنظیم"
@@ -46,7 +50,7 @@ class Article(models.Model):
     )
     title = models.CharField(max_length=200, verbose_name="عنوان مقاله")
     slug = models.SlugField(max_length=100, unique=True, verbose_name="آدرس مقاله")
-    catagory = models.ManyToManyField(Catagory, verbose_name="دسته بندی")
+    catagory = models.ManyToManyField(Catagory, verbose_name="دسته بندی", related_name="articles")
     description = models.TextField(verbose_name="محتوا")
     thumbnail = models.ImageField(upload_to="images", verbose_name="تصویر مقاله")
     publish = models.DateTimeField(default=timezone.now, verbose_name="زمان انتشار")
@@ -67,3 +71,7 @@ class Article(models.Model):
 
     jpublish.short_description = "زمان انتشار"
 
+    def catagory_published(self):
+        return self.catagory.filter(status=True)
+    
+    objects = ArticleManager()
