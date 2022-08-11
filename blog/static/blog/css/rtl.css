@@ -42,6 +42,6 @@ header.masthead .site-heading h1{
   font-size: 40px !important;
   font-family: "Sahel" ;
 }
-.navbar-brand {
+header.masthead .page-heading .subheading, header.masthead .site-heading .subheading, .btn {
   font-family: "Sahel" ;
 }
