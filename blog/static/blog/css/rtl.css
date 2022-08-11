@@ -11,7 +11,7 @@
 body {
     direction: rtl;
     text-align: right;
-    font-family: "Sahel"
+    font-family: "Sahel";
 }
 
 .navbar-nav {
@@ -25,15 +25,23 @@ body {
   font-size: 15px !important;
 }
 .post-title{
-  font-size: 30px !important;
+  font-size: 28px !important;
   font-family: "Sahel" ;
 }
 .post-meta {
+  font-size: 15px !important;
   text-align: left;
   font-family: "Sahel" ;
 }
 
 .post-subtitle {
   font-size: 15px;
+  font-family: "Sahel" ;
+}
+header.masthead .site-heading h1{
+  font-size: 40px !important;
+  font-family: "Sahel" ;
+}
+.navbar-brand {
   font-family: "Sahel" ;
 }
