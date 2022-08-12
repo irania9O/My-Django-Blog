@@ -87,5 +87,17 @@ class Article(models.Model):
 
     def thumbnail_tag(self):
         return format_html(f"<img width=100 height=60 style='border-radius: 5px;' src='{self.thumbnail.url}'>")
-   
+
     thumbnail_tag.short_description = "عکس"
+
+    def catagoy_to_list(self):
+        catagoties = []
+        for catagory in self.catagory.active():
+            catagoties.append(catagory.title)
+        
+        if len(catagoties) == 0:
+            return "بدون دسته بندی"
+        else:
+            return "، ".join(catagoties)
+
+    catagoy_to_list.short_description = "دسته بندی"

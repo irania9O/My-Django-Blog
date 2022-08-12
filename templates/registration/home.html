@@ -1,3 +1,55 @@
 {% extends 'registration/base.html' %}
 My Home
 <p>{{user.get_full_name}}</p>
+
+{% block title %}
+لیست مقالات
+{% endblock %}
+
+
+{% block main %}
+<div class="row">
+    <div class="col-12">
+      <div class="card">
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>عنوان مقاله</th>
+                <th>تصویر بندانگشتی</th>
+                <th>دسته‌بندی</th>
+                <th>نویسنده</th>
+                <th>خلاصه</th>
+                <th>زمان انتشار</th>
+                <th>وضعیت</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for article in object_list %}
+                    <tr>
+                        <td>{{article.title}}</td>
+                        <td><img src="{{article.thumbnail.url}}" width="120" height="80" style="border-radius: 6px  ;"></td>
+                        <td>{{article.catagoy_to_list}}</td>
+                        <td>{{article.author.get_full_name}}</td>
+                        <td>{{article.description|truncatewords:30}}</td>
+                        <td>{{article.jpublish}}</td>
+                        <td>
+                            {% if article.status == 'p' %}
+                                <span class="badge badge-success">منتشر شده</span>
+                                <a target="_blank" class="badge badge-primary"href="{% url 'blog:detail' article.slug%}">نمایش در مقاله در سایت</a>
+                            {% else %}
+                                <span class="badge badge-danger">پیش نویس</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+{% endblock %}

@@ -38,13 +38,13 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                مقالات
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="{% url 'account:home' %}" class="nav-link active">
                   <i class="fa fa-list nav-icon"></i>
                   <p>لیست مقالات</p>
                 </a>
@@ -62,7 +62,7 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 پروفایل
-                <span class="right badge badge-danger">چدید</span>
+                <span class="right badge badge-danger">جدید</span>
               </p>
             </a>
           </li>

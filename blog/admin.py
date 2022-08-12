@@ -78,16 +78,5 @@ class ArticleAdmin(admin.ModelAdmin):
     ordering = ['-status', 'publish']
     actions = [make_published, make_draft]
     
-    def catagoy_to_list(self, obj):
-        catagoties = []
-        for catagory in obj.catagory.active():
-            catagoties.append(catagory.title)
-        
-        if len(catagoties) == 0:
-            return "بدون دسته بندی"
-        else:
-            return "، ".join(catagoties)
-
-    catagoy_to_list.short_description = "دسته بندی"
 
 admin.site.register(Article, ArticleAdmin)
