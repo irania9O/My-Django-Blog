@@ -2,6 +2,7 @@ from msilib.schema import Class
 from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 from .models import Article, Catagory
 
 # def home(request, page=1):
@@ -58,4 +59,20 @@ class CatagoryList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['catagory'] = catagory
+        return context
+
+
+class AuthorList(ListView):
+    paginate_by = 5
+    template_name = "blog/author_list.html"
+
+    def get_queryset(self):
+        global author
+        username = self.kwargs.get("username")
+        author = get_object_or_404(User, username=username)
+        return author.articles.published()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['author'] = author
         return context

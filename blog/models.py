@@ -1,7 +1,7 @@
-from tkinter.messagebox import NO
 from django.db import models
 from django.utils import timezone
 from django.utils.html import format_html 
+from django.contrib.auth.models import User
 from extentions.utils import jalali_converter
 
 # my manager 
@@ -59,6 +59,7 @@ class Article(models.Model):
         ('d', 'پیش‌نویس'),
         ('p', 'منتشر شده'),
     )
+    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="articles", verbose_name="نویسنده")
     title = models.CharField(max_length=200, verbose_name="عنوان مقاله")
     slug = models.SlugField(max_length=100, unique=True, verbose_name="آدرس مقاله")
     catagory = models.ManyToManyField(Catagory, verbose_name="دسته بندی", related_name="articles")
