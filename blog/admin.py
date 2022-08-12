@@ -80,7 +80,7 @@ class ArticleAdmin(admin.ModelAdmin):
     
     def catagoy_to_list(self, obj):
         catagoties = []
-        for catagory in obj.catagory_published():
+        for catagory in obj.catagory.active():
             catagoties.append(catagory.title)
         
         if len(catagoties) == 0:
