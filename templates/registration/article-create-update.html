@@ -1,0 +1,18 @@
+{% extends 'registration/base.html' %}
+My Home
+<p>{{user.get_full_name}}</p>
+
+{% block title %}
+لیست مقالات
+{% endblock %}
+
+
+{% block main %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token%}
+        {{ form.as_p }}
+        <button class="btn btn-success">ارسال مقاله</button>
+    </form>
+    
+{% endblock %}
+
