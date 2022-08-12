@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +34,12 @@
 <body>
 	
 	<div class="limiter">
+		{% if form.non_field_errors %}
+			<div class="myerrors">
+				{{form.non_field_errors.as_text}}
+			</div>
+		{% endif %}
+
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form"  method="post">
@@ -45,16 +52,29 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-						{{form.username}}
+						{{form.username|add_class:"input100"}}
 						<span class="focus-input100" data-placeholder="نام کاربری"></span>
+						
+						{% if form.username.errors %}
+							<div class="myerrors">
+								{{form.username.errors}}
+							</div>
+						{% endif %}
+
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						{{form.password}}
+						{{form.password|add_class:"input100"}}
 						<span class="focus-input100" data-placeholder="گذرواژه"></span>
+
+						{% if form.password.errors %}
+							<div class="myerrors">
+								{{form.password.errors}}
+							</div>
+						{% endif %}
 					</div>
 
 					<div class="container-login100-form-btn">
