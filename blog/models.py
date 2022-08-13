@@ -57,8 +57,10 @@ class Catagory(models.Model):
     objects = CatagoryManager()
 class Article(models.Model):
     STATUS_CHOICES = (
-        ('d', 'پیش‌نویس'),
-        ('p', 'منتشر شده'),
+        ('d', 'پیش‌نویس'),           # draft
+        ('p', 'منتشر شده'),         # publish
+        ('i', 'در حال بررسی'),      # investigaion
+        ('b', 'برگشت داده شده'),    # back
     )
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="articles", verbose_name="نویسنده")
     title = models.CharField(max_length=200, verbose_name="عنوان مقاله")
