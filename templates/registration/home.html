@@ -2,9 +2,9 @@
 My Home
 <p>{{user.get_full_name}}</p>
 
-{% block title %}
+{% block title %}{% block title-meta %}
 لیست مقالات
-{% endblock %}
+{% endblock %}{% endblock %}
 
 
 {% block main %}
@@ -32,7 +32,7 @@ My Home
                         <td><img src="{{article.thumbnail.url}}" width="120" height="80" style="border-radius: 6px  ;"></td>
                         <td>{{article.catagoy_to_list}}</td>
                         <td>{{article.author.get_full_name}}</td>
-                        <td>{{article.description|truncatewords:30}}</td>
+                        <td>{{article.description|striptags|truncatewords:30}}</td>
                         <td>{{article.jpublish}}</td>
                         <td>
                             {% if article.status == 'p' %}
