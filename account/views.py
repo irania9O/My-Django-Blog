@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+from .forms import ProfileForm
 from .mixins import (
     FieldsMixin, 
     FormValidMixin, 
@@ -46,10 +48,7 @@ class Profile(UpdateView):
     model = User
     success_url = reverse_lazy('account:profile')
     template_name = 'registration/profile.html'
-    fields = [
-        'username', 'email' , 'first_name',
-        'last_name', 'special_user', 'is_author'
-        ]
+    form_class = ProfileForm
 
     def get_object(self):
         return User.objects.get(pk= self.request.user.pk)
