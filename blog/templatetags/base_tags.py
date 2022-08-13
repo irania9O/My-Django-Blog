@@ -16,12 +16,12 @@ def site_header():
 def site_description():
     return SiteSetting.objects.get(pk=1).site_description
 
+@register.simple_tag
+def site_image():
+    return SiteSetting.objects.get(pk=1).image.url
+
 @register.inclusion_tag("blog/partials/catagory_navbar.html")
 def catagory_navbar():
     return {
         "catagories": Catagory.objects.filter(status=True)
     }
-
-@register.simple_tag
-def site_image():
-    return SiteSetting.objects.get(pk=1).iamge.url

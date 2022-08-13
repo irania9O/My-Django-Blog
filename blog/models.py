@@ -35,7 +35,7 @@ class SiteSetting(SingletonBaseModel):
     site_header = models.CharField(max_length=50, verbose_name="هدر سایت", default="هدر سایت")
     site_name = models.CharField(max_length=100, verbose_name="نام سایت", default="نام سایت")
     site_description =  models.CharField(max_length=200, verbose_name="توضیحات سایت", default="توضیحات سایت")
-    iamge = models.ImageField(upload_to="images", verbose_name="تصویر تیتر سایت")
+    image = models.ImageField(upload_to="images", verbose_name="تصویر تیتر سایت")
 
     def __str__(self):
         return 'برای تغیر اطلاعات کلیک کنید.'

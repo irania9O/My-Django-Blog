@@ -2,7 +2,7 @@ from msilib.schema import Class
 from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.models import User
+from account.models import User
 from .models import Article, Catagory
 
 # def home(request, page=1):
