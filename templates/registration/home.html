@@ -1,6 +1,4 @@
 {% extends 'registration/base.html' %}
-My Home
-<p>{{user.get_full_name}}</p>
 
 {% block title %}{% block title-meta %}
 لیست مقالات
@@ -46,6 +44,10 @@ My Home
                                 <a target="_blank" class="badge badge-primary"href="{% url 'blog:detail' article.slug%}">نمایش در مقاله در سایت</a>
                             {% else %}
                                 <span class="badge badge-danger">پیش نویس</span>
+                            {% endif %}
+
+                            {% if user.is_superuser %}
+                              <a class="badge text-danger" href="{% url 'account:article-delete' article.pk %}">حذف</a>
                             {% endif %}
                         </td>
                     </tr>
