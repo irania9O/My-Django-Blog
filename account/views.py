@@ -15,7 +15,7 @@ from django.views.generic import (
     DeleteView
     )
 from blog.models import Article
-
+from .models import User
 
 class ArticleList(LoginRequiredMixin, ListView):
     template_name = 'registration/home.html'
@@ -41,3 +41,15 @@ class ArticleDelete(SuperUserAccessMixin,DeleteView):
     model = Article
     success_url = reverse_lazy('account:home')
     template_name = 'registration/article_confirm_delete.html'
+
+class Profile(UpdateView):
+    model = User
+    success_url = reverse_lazy('account:profile')
+    template_name = 'registration/profile.html'
+    fields = [
+        'username', 'email' , 'first_name',
+        'last_name', 'special_user', 'is_author'
+        ]
+
+    def get_object(self):
+        return User.objects.get(pk= self.request.user.pk)
