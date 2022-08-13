@@ -7,12 +7,14 @@ class FieldsMixin():
 		if request.user.is_superuser:
 			self.fields = [
                 'author','title','slug','catagory',
-                'description','thumbnail','status'
+                'description','thumbnail', 'is_special',
+				'status'
             ]
 		elif request.user.is_author:
 			self.fields = [
                 'title','slug','catagory',
-                'description','thumbnail'
+                'description','thumbnail',
+				'is_special'
             ]
 		else:
 			raise Http404("You can't see this page.")

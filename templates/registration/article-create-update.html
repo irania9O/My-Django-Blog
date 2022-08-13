@@ -30,6 +30,7 @@
                         </div>
                         <div class="form-group col-md-6 mb-0">
                             {{ form.thumbnail|as_crispy_field }}
+                            {{ form.is_special|as_crispy_field }}
                         </div>
                         
                         {% if user.is_superuser %}
