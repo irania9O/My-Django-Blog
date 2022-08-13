@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
 from account.models import User
+from account.mixins import AuthorAccessMixin
 from .models import Article, Catagory
 
 # def home(request, page=1):
@@ -76,3 +77,9 @@ class AuthorList(ListView):
         context = super().get_context_data(**kwargs)
         context['author'] = author
         return context
+    
+
+class ArticlePreview(AuthorAccessMixin, DetailView):
+    def get_object(self):
+        pk = self.kwargs.get("pk")
+        return get_object_or_404(Article, pk=pk)
