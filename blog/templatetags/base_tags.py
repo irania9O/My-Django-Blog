@@ -27,10 +27,11 @@ def catagory_navbar():
     }
 
 @register.inclusion_tag("registration/partials/link.html")
-def link(request, link_name, content):
+def link(request, link_name, content, classes):
     return {
         "request": request,
         "link_name": link_name,
         "link": f"account:{link_name}",
-        "content": content
+        "content": content,
+        "classes": classes
     }
