@@ -68,6 +68,9 @@
                 </div>
                 <!-- Divider-->
                 <hr class="my-4" />
+                {% empty %}
+                    <p>متاسفانه محتوایی برای نمایش وجود ندارد.</p>
+
             {% endfor %}
             <!-- Pager-->
             {% if is_paginated %}

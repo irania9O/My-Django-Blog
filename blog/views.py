@@ -1,6 +1,7 @@
 # from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 
 from account.models import User
 from account.mixins import AuthorAccessMixin
@@ -90,3 +91,16 @@ class ArticlePreview(AuthorAccessMixin, DetailView):
     def get_object(self):
         pk = self.kwargs.get("pk")
         return get_object_or_404(Article, pk=pk)
+
+class SearchList(ListView):
+	paginate_by = 5
+	template_name = 'blog/search_list.html'
+
+	def get_queryset(self):
+		search = self.request.GET.get('q')
+		return Article.objects.filter(Q(description__icontains=search) | Q(title__icontains=search))
+
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context['search'] = self.request.GET.get('q')
+		return context

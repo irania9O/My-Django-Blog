@@ -1,5 +1,5 @@
 
-<div class="collapse navbar-collapse" id="navbarResponsive">
+<div class="collapse navbar-collapse  py-4" id="navbarResponsive">
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" href="{% url 'blog:home' %}">خانه</a>
@@ -16,4 +16,8 @@
             {% endfor %}
         </li>
     </ul>
+    <form class="form-inline px-4 px-lg-5" action="{% url 'blog:search' %}">
+        <input type="text" name="q" class="form-control" placeholder="جستجوی متن">
+        <button class="btn btn-success" style="padding: 6px; border-radius: 5px; margin-right: 5px;">جستجو</button>
+      </form>    
 </div>

@@ -4,7 +4,8 @@ from .views import (
     ArticleDetail, 
     CatagoryList, 
     AuthorList,
-    ArticlePreview
+    ArticlePreview,
+    SearchList
 )
 
 app_name = "blog"
@@ -16,5 +17,8 @@ urlpatterns = [
     path('catagory/<slug:slug>' , CatagoryList.as_view(), name= "catagory"),
     path('catagory/<slug:slug>/page/<int:page>' , CatagoryList.as_view(), name= "catagory"),
     path('author/<slug:username>' , AuthorList.as_view(), name= "author"),
-    path('author/<slug:username>/page/<int:page>' , AuthorList.as_view(), name= "author")
+    path('author/<slug:username>/page/<int:page>' , AuthorList.as_view(), name= "author"),
+    path('search/', SearchList.as_view(), name="search"),
+	path('search/page/<int:page>', SearchList.as_view(), name="search"),
+
 ]
