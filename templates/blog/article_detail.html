@@ -2,6 +2,7 @@
 {% load comment_tags %}  {# Loading the template tag #}
 {% load ratings %}
 {% load base_tags %}
+{% load humanize %}
 
 {% block title %} | {{object.title}}{% endblock %}
 
@@ -43,7 +44,7 @@
                         border-color: #dc3545;">ویژه</span>
                     {% endif %} 
                     </h1>
-                    <time>{{object.jpublish}}</time>
+                    <time>{{object.publish|naturaltime}}</time>
                     <div>{% ratings object %}</div>
                     <div>بازدید ها : {{ object.hits.count }}</div>
                 </div>

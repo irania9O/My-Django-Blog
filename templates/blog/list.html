@@ -2,6 +2,7 @@
 {% load static %}
 {% load base_tags %}
 {% load ratings %}
+{% load humanize %}
 
 {% block main %}
 <style>
@@ -57,7 +58,7 @@
                     <p class="post-meta">
                         نوشته شده توسط :
                         <a href="{% url 'blog:author' article.author %}">{{article.author.get_full_name}}</a>
-                        {{ article.jpublish }}
+                        {{ article.publish|naturaltime }}
                     </p>
                     <div class="post-tags" >
                         {% for catagory in article.catagory.active %}
