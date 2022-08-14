@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 {% load base_tags %}
+{% load ratings %}
 
 {% block main %}
 <style>
@@ -32,6 +33,7 @@
                 <div class="post-preview">
                     <a href="{% url 'blog:detail' article.slug %}">
                         <h2 class="post-title">{{ article.title }}
+                            <div>{% ratings article %}</div>
                           {% if article.is_special %}
                             <span style="font-size: 10px;
                             color: #fff;
