@@ -33,7 +33,7 @@
                 <div class="post-preview">
                     <a href="{% url 'blog:detail' article.slug %}">
                         <h2 class="post-title">{{ article.title }}
-                            <div>{% ratings article %}</div>
+                        <div>{% ratings article %}</div>
                           {% if article.is_special %}
                             <span style="font-size: 10px;
                             color: #fff;
@@ -59,6 +59,7 @@
                             <a href="{% url 'blog:catagory' catagory.slug %}">#{{catagory.title}}</a>
                         {% endfor %}
                     </div>
+                    <div>بازدید ها : {{ article.hits.count }}</div>
                 </div>
                 <!-- Divider-->
                 <hr class="my-4" />

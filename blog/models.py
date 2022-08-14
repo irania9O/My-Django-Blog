@@ -16,6 +16,17 @@ class CatagoryManager(models.Manager):
     def active(self):
         return self.filter(status=True)
 
+
+class IPAddress(models.Model):
+    ip_address = models.GenericIPAddressField(verbose_name="آدرس آی پی")
+
+    class Meta:
+        verbose_name = "آی پی"
+        verbose_name_plural = "آی پی ها"
+
+    def __str__(self):
+        return self.ip_address
+
 class SingletonBaseModel(models.Model):
     class Meta:
         verbose_name = "تنظیم"
@@ -78,6 +89,8 @@ class Article(models.Model):
     is_special = models.BooleanField(default=False, verbose_name="مقاله ویژه")
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, verbose_name="وضعیت")
     comments = GenericRelation(Comment)
+    hits = models.ManyToManyField(IPAddress, blank=True, related_name="hits", verbose_name="بازدید ها")
+
     class Meta:
         verbose_name = "مقاله"
         verbose_name_plural = "مقالات"

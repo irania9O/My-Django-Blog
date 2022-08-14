@@ -1,7 +1,13 @@
 from django.contrib import admin, messages
 from django.utils.translation import ngettext
-from .models import Article, Catagory, SiteSetting
+from .models import (
+    Article, 
+    Catagory, 
+    SiteSetting,
+    IPAddress
+    )
 
+admin.site.register(IPAddress)
 
 class SiteSettingsAdmin(admin.ModelAdmin):
     # Create a default object on the first page of SiteSettingsAdmin with a list of settings
