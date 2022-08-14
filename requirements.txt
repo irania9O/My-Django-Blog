@@ -4,3 +4,4 @@ django-widget-tweaks
 django-crispy-forms
 python-decouple
 six
+django-gravatar2
