@@ -1,5 +1,8 @@
+from ..models import SiteSetting, Catagory, Article
 from django import template
-from ..models import SiteSetting, Catagory
+from django.utils import timezone
+from django.db.models import Count, Q
+from dateutil.relativedelta import relativedelta
 
 register = template.Library()
 
@@ -35,3 +38,12 @@ def link(request, link_name, content, classes):
         "content": content,
         "classes": classes
     }
+
+@register.inclusion_tag("blog/partials/popular_articles.html")
+def popular_articles():
+	last_month = timezone.now() - relativedelta(months=1)
+	return {
+		"popular_articles": Article.objects.published().annotate(
+			count=Count('hits', filter=Q(articlehit__created__gt=last_month))
+		).order_by('-count', '-publish')[:5]
+	}

@@ -1,7 +1,7 @@
-from msilib.schema import Class
-from django.core.paginator import Paginator
+# from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
+
 from account.models import User
 from account.mixins import AuthorAccessMixin
 from .models import Article, Catagory
@@ -19,6 +19,7 @@ class ArticleList(ListView):
     # model = Article
     # template_name = "blog/home.html"
     # context_object_name = "articles"
+    
     queryset = Article.objects.published()
     paginate_by = 5
 

@@ -69,3 +69,15 @@ header.masthead .site-heading h1{
   text-decoration: underline;
   transform: rotate(-90deg);
 } 
+
+.popular_articles {
+    border: 1px solid #bfbfbf;
+    padding: 15px;
+    border-radius: 5px;
+    width: 240px;
+    position: absolute;
+    left: 50px;
+    top: auto;
+    box-shadow: -5px 5px #d5d5d5;
+    text-align: right;
+}

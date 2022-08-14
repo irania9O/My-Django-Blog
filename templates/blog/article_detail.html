@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 {% load comment_tags %}  {# Loading the template tag #}
 {% load ratings %}
+{% load base_tags %}
 
 {% block title %} | {{object.title}}{% endblock %}
 
@@ -26,6 +27,7 @@
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
+
                 <div class="site-heading">
                     <h1>{{object.title}}
                     {% if article.is_special %}
@@ -49,7 +51,7 @@
         </div>
     </div>
 </header>
-
+{% popular_articles %}
 <!-- Post Content-->
 <article class="mb-4">
     <div class="container px-4 px-lg-5">
