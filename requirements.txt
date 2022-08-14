@@ -2,3 +2,4 @@ Django
 Pillow
 django-widget-tweaks
 django-crispy-forms
+python-decouple
