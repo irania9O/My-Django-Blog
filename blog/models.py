@@ -4,8 +4,10 @@ from django.utils import timezone
 from django.utils.html import format_html 
 from account.models import User
 from extentions.utils import jalali_converter
+from django.contrib.contenttypes.fields import GenericRelation
+from comment.models import Comment
 
-# my manager 
+
 class ArticleManager(models.Manager):
     def published(self):
         return self.filter(status='p')
@@ -55,6 +57,8 @@ class Catagory(models.Model):
         return self.title
     
     objects = CatagoryManager()
+
+
 class Article(models.Model):
     STATUS_CHOICES = (
         ('d', 'پیش‌نویس'),           # draft
@@ -73,7 +77,7 @@ class Article(models.Model):
     updated = models.DateTimeField(auto_now=True)
     is_special = models.BooleanField(default=False, verbose_name="مقاله ویژه")
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, verbose_name="وضعیت")
-
+    comments = GenericRelation(Comment)
     class Meta:
         verbose_name = "مقاله"
         verbose_name_plural = "مقالات"

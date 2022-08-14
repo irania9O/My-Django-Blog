@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load comment_tags %}  {# Loading the template tag #}
 
 {% block title %} | {{object.title}}{% endblock %}
 
@@ -7,6 +8,10 @@
     header.masthead {
         background-image: url("{{ object.thumbnail.url }}")
       }
+    section#comments {
+        direction: rtl;
+        text-align: right;
+    }
 </style>
 
 <!-- Page Header-->
@@ -51,6 +56,9 @@
                 {% else %}
                     {{object.description | safe}}
                 {% endif%}
+
+                {% render_comments object request %}
+                {% include_bootstrap %}
             </div>
             
         </div>
