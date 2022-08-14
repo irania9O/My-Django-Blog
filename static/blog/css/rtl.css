@@ -70,14 +70,18 @@ header.masthead .site-heading h1{
   transform: rotate(-90deg);
 } 
 
+aside {
+  width: 240px;
+  position: absolute;
+  left: 50px;
+  top: auto;
+}
+
 .popular_articles {
     border: 1px solid #bfbfbf;
     padding: 15px;
     border-radius: 5px;
-    width: 240px;
-    position: absolute;
-    left: 50px;
-    top: auto;
+    margin-bottom: 20px;
     box-shadow: -5px 5px #d5d5d5;
     text-align: right;
 }
