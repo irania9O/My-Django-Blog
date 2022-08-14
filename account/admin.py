@@ -4,16 +4,16 @@ from .models import User
 
 
 UserAdmin.fieldsets[2][1]['fields'] = (
-    'is_active',
-     'is_staff',
-      'is_superuser',
-      'is_author',
-      'special_user',
-      'groups',
-      'user_permissions'
-     )
+	'is_active',
+	'is_staff',
+	'is_superuser',
+	'is_author',
+	'special_user',
+	'groups',
+	'user_permissions',
+	 )
 
-UserAdmin.list_display += ('is_author','is_special_user')
+UserAdmin.list_display += ('is_author','is_special_user','is_active')
 
 admin.site.register(User, UserAdmin)
 
