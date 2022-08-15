@@ -76,6 +76,12 @@ aside {
   left: 50px;
   top: auto;
 }
+@media only screen and (max-width: 1150px) {
+  aside {
+	display: contents;
+    position: unset;
+  }
+}
 
 .popular_articles {
     border: 1px solid #bfbfbf;
