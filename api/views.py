@@ -5,7 +5,7 @@ from blog.models import Article
 from .serializers import Userserializer, Articleserializer
 from .permissions import (
     IsSuperUser,
-    IsAuthorOrReadOnly
+    IsAuthorAndDraftOrReadOnly
 )
 # from rest_framework.generics import (
 #     ListCreateAPIView,
@@ -23,14 +23,15 @@ class UserViewSET(ModelViewSet):
 class ArticleViewSET(ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = Articleserializer
+    permission_classes = [IsAuthorAndDraftOrReadOnly]
+    
+    # def get_permissions(self):
+    #     if self.action in ['list']:
+    #         permission_classes = [IsAuthorOrReadOnly]
+    #     else:
+    #         permission_classes = [IsAuthorOrReadOnly]
 
-    def get_permissions(self):
-        if self.action in ['list']:
-            permission_classes = [IsAuthorOrReadOnly]
-        else:
-            permission_classes = [IsAuthorOrReadOnly]
-
-        return [permission() for permission in permission_classes]
+    #     return [permission() for permission in permission_classes]
         
 
 # class UserList(ListCreateAPIView):
