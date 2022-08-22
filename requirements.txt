@@ -9,3 +9,4 @@ django-relativedelta
 django-model-utils
 swapper
 djangorestframework
+djangorestframework-simplejwt
