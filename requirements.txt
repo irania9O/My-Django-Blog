@@ -11,3 +11,4 @@ swapper
 djangorestframework
 djangorestframework-simplejwt
 django-allauth
+django-filter

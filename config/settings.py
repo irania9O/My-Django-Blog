@@ -62,6 +62,7 @@ INSTALLED_APPS += [
     # 'allauth.account',
     # 'allauth.socialaccount',
     'dj_rest_auth.registration',
+    'django_filters',
 ]
 
 SITE_ID = 1
@@ -180,6 +181,10 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ]
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+    ],
 }
 REST_USE_JWT = True
