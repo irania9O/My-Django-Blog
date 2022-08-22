@@ -3,7 +3,8 @@ from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 
-from account.models import User
+# from account.models import User
+from django.contrib.auth import get_user_model
 from account.mixins import AuthorAccessMixin
 from .models import Article, Catagory
 
@@ -78,7 +79,7 @@ class AuthorList(ListView):
     def get_queryset(self):
         global author
         username = self.kwargs.get("username")
-        author = get_object_or_404(User, username=username)
+        author = get_object_or_404(get_user_model(), username=username)
         return author.articles.published()
 
     def get_context_data(self, **kwargs):

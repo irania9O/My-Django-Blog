@@ -2,7 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.html import format_html 
-from account.models import User
+# from account.models import User
+from django.contrib.auth import get_user_model
 from extentions.utils import jalali_converter
 from django.contrib.contenttypes.fields import GenericRelation
 from comment.models import Comment
@@ -77,7 +78,7 @@ class Article(models.Model):
         ('i', 'در حال بررسی'),      # investigaion
         ('b', 'برگشت داده شده'),    # back
     )
-    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="articles", verbose_name="نویسنده")
+    author = models.ForeignKey(get_user_model(), null=True, on_delete=models.SET_NULL, related_name="articles", verbose_name="نویسنده")
     title = models.CharField(max_length=200, verbose_name="عنوان مقاله")
     slug = models.SlugField(max_length=100, unique=True, verbose_name="آدرس مقاله")
     catagory = models.ManyToManyField(Catagory, verbose_name="دسته بندی", related_name="articles")
