@@ -26,7 +26,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('comment/', include('comment.urls')),
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
-    path('account/', include('account.urls'))
+    path('account/', include('account.urls')),
+
+    path("api/", include('api.urls')),
 ]
 
 

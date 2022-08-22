@@ -8,3 +8,4 @@ django-gravatar2
 django-relativedelta
 django-model-utils
 swapper
+djangorestframework

@@ -52,6 +52,11 @@ INSTALLED_APPS = [
     'extentions'
 ]
 
+INSTALLED_APPS += [
+    'rest_framework',
+    'api.apps.ApiConfig',
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
