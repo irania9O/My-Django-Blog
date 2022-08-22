@@ -18,6 +18,7 @@ class UserViewSET(ModelViewSet):
     queryset = get_user_model().objects.all()
     serializer_class = Userserializer
     permission_classes = [IsSuperUser]  
+    ordering_fields = ['special_user', 'date_joined', 'last_login']
     search_fields = ['username', 'email', 'first_name', 'last_name']
 
 
@@ -26,12 +27,15 @@ class ArticleViewSET(ModelViewSet):
     serializer_class = Articleserializer
     permission_classes = [IsAuthorAndDraftOrReadOnly]
     filterset_fields = ['status', 'author']
-    search_fields = ['title',
-                     'description',
-                     'catagory__title',
-                     'author__username',
-                     'author__first_name',
-                     'author__last_name',
+    ordering_fields = ['publish', 'status', 'updated', 'hits__count']
+    ordering = ['-publish']
+    search_fields = [
+                        'title',
+                        'description',
+                        'catagory__title',
+                        'author__username',
+                        'author__first_name',
+                        'author__last_name', 
                     ]
 
     # def get_permissions(self):
