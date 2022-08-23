@@ -1,17 +1,17 @@
-# My Django Blog
+# ✨ My Django Blog
 
 _A blog built by Django framework and has features such as comment system, star rating system, separate author and manager, hot articles, most visited articles (visit counting system), **API**, ...._
 
 <br>
 
-# Starting 🚀
+# 🚀 Starting
 
 _These instructions allow you to get a copy of the running project on your local machine._
 
-## Pre-requisites 📋
+## 📋 Pre-requisites
 _You need to have a 3.X version of Python_
 
-## Installation 🔧
+## 🔧 Installation
 
 - Make a git clone or download it in zip
     ```bash
@@ -45,7 +45,7 @@ _You need to have a 3.X version of Python_
 
 <br>
 
-# Start the development server 🧮:
+# 🧮 Start the development server
 
 ```bash
 python manage.py runserver
@@ -56,8 +56,8 @@ _You should see the admin’s login screen and home page on your local domain �
 <br>
 
 
-# Api 🌐
-- ## Authorization
+# 🌐 Api
+- ## 👨‍✈️ Authorization
     _All API requests require the use of a generated Token or API Key. You can find your API key, on blew routers._
 
     ```http
@@ -74,7 +74,7 @@ _You should see the admin’s login screen and home page on your local domain �
 <hr>
 <br>
 
-- ## Permissions
+- ## ✋ Permissions
     _Users are limited based on their position on the site._
 
     | Position | Permissions |
@@ -86,7 +86,7 @@ _You should see the admin’s login screen and home page on your local domain �
 <hr>
 <br>
 
-- ## Status Codes
+- ## 📇 Status Codes
     _Api returns the following status codes in its API:_
 
     | Status Code | Description |
@@ -100,7 +100,9 @@ _You should see the admin’s login screen and home page on your local domain �
 
 <br>
 
-# Screenshots
+# 🖼️ Screenshots
+<br>
+
 ![home](./screenshots/home.jpg)
 ![article_detail](./screenshots/article_detail.jpg)
 ![comments](./screenshots/comments.jpg)
