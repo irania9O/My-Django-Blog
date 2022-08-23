@@ -12,3 +12,4 @@ djangorestframework
 djangorestframework-simplejwt
 django-allauth
 django-filter
+drf-dynamic-fields

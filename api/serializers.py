@@ -2,6 +2,7 @@ from rest_framework.serializers import ModelSerializer, SerializerMethodField
 # from account.models import User
 from django.contrib.auth import get_user_model
 from blog.models import Article
+from drf_dynamic_fields import DynamicFieldsMixin
 
 
 # class AuthorSerializer(ModelSerializer):
@@ -9,13 +10,13 @@ from blog.models import Article
 #         model = get_user_model()
 #         fields = ["id", "username", "first_name", "last_name"]
 
-class UserSerializer(ModelSerializer):
+class UserSerializer(DynamicFieldsMixin, ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = "__all__" 
 
 
-class ArticleSerializer(ModelSerializer):
+class ArticleSerializer(DynamicFieldsMixin, ModelSerializer):
     # author = AuthorSerializer()
 
     def get_author(self, obj):
